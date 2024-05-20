@@ -1,0 +1,6 @@
+﻿{
+	"javascript": [
+		"~/App_Plugins/Silktide/silktide.controller.js",
+		"~/App_Plugins/Silktide/silktide.resource.js"
+	]
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Silktide Project - All</comment>
+<entry key="allowIndexDefinitions">false</entry>
+<entry key="created">2024-01-12T12:18:59.496Z</entry>
+<entry key="groupId">com.silktide</entry>
+<entry key="name">silktide.all</entry>
+<entry key="description">All content package for Silktide Project</entry>
+<entry key="artifactId">silktide.all</entry>
+<entry key="version">1.0.5-SNAPSHOT</entry>
+<entry key="packageType">container</entry>
+<entry key="requiresRoot">false</entry>
+<entry key="group">com.silktide</entry>
+</properties>

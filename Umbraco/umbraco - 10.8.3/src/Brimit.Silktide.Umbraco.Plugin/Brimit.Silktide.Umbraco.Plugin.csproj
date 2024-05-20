@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ContentTargetFolders>.</ContentTargetFolders>
+    <Product>Brimit.Silktide.Umbraco.Plugin</Product>
+    <PackageId>Brimit.Silktide.Umbraco.Plugin</PackageId>
+    <Title>Silktide Umbraco 10 Plugin</Title>
+    <Description>
+      The complete solution for web managers.
+      Plugin for Umbraco v10.8.3
+      https://help.silktide.com/en/articles/8020884-how-to-integrate-silktide-with-umbraco
+    </Description>
+    <Product>Silktide CMS Integration with Umbraco v10</Product>
+    <PackageTags>umbraco plugin package</PackageTags>
+    <RootNamespace>Brimit.Silktide.Umbraco.Plugin</RootNamespace>
+    <Version>10.8.3</Version>
+    <AssemblyVersion>1.10.8.4</AssemblyVersion>
+    <FileVersion>1.10.8.4</FileVersion>
+    <Company>Brimit© Silktide®</Company>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Copyright>Brimit© Silktide®</Copyright>
+    <PackageIcon>\App_Plugins\Brimit.Silktide.Umbraco.Plugin\Silktide-400x267.png</PackageIcon>
+    <PackageProjectUrl>https://help.silktide.com/en/articles/8020884-how-to-integrate-silktide-with-umbraco</PackageProjectUrl>
+    <PackageReadmeFile>\App_Plugins\Brimit.Silktide.Umbraco.Plugin\README.md</PackageReadmeFile>
+    <RepositoryType>none</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="10.8.3" />
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="10.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="App_Plugins\Brimit.Silktide.Umbraco.Plugin\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
+    <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="App_Plugins\Brimit.Silktide.Umbraco.Plugin\README.md" />
+    <None Remove="App_Plugins\Brimit.Silktide.Umbraco.Plugin\Silktide-400x267.png" />
+  </ItemGroup>
+</Project>

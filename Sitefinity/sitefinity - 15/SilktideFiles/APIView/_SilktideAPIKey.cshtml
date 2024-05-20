@@ -1,0 +1,210 @@
+﻿@model SilktidePlugin.Mvc.Models.SilktideAPIKey
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers
+@{var message = "";}
+@if (Model != null)
+{  
+    message = Model.Message;
+}
+@using (Html.BeginFormSitefinity("Index", "SilktideAPIKey"))
+{
+    <div class="silktide-box recentItemsWidget sfDashboardWidgetWrp silktide form">
+        <div class="silktide-box-content">
+            <div class="flex justify-between items-center">
+                <h3 class="bold">Silktide CMS plugin</h3>
+                <div class="silktide-button" data-element="" label="Save" type="button">
+                    <div class="icon-check silktide-button__success -hidden -white"></div>
+                    <div class="icon-delete silktide-button__error -hidden -white"></div>
+                    <div class="silktide-button__progress -hidden -white"></div>
+                    <button type="submit" class="SaveKey btn silktide-button__button btn-success silktide-button--">Save</button>
+                </div>
+            </div>
+            <p>
+                To use this plugin, please specify your API key for Silktide.
+            </p>
+            <p>&nbsp;</p>
+            <div class="control-group">
+                <div class="silktide-el-wrap">
+                    <label class="control-label" for="apikey">API key: </label>
+                    <div class="controls">
+                        <div class="silktide-property-editor">
+                            <div disable-tabindex="preview">
+                                @Html.TextBoxFor(m => m.APIKey, new { @class = "silktide-property-editor silktide-textstring", @pattern = ".{3,}", @required = "", @title = "API key has wrong format. Length must be less then 50 characters." })
+                                @Html.ValidationMessageFor(m => m.APIKey)
+                                <p>To check the API key
+                                    @Html.ActionLink("click here for verification.", "CheckAPIKey", null, new { @id = "CheckApi" })
+                                    Do not forget to click "Save" after successful verification.
+                                </p>
+                                <p>&nbsp;</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>           
+        </div>
+    </div>
+    <style>
+
+        .silktide-box {
+            border: 1px solid #d8d7d9;
+            border-radius: 3px;
+            margin-bottom: 30px;
+            background: white;
+        }
+
+        .silktide-box-content {
+            padding: 20px;
+        }
+
+        .silktide .justify-between {
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+
+        .silktide .bold {
+            font-weight: 700;
+        }
+
+        .silktide h3 {
+            font-size: 26.25px;
+            width: 276px;
+            display: inline-block;
+        }
+
+        .silktide-button {
+            position: relative;
+            display: inline-block;
+            float: right;
+        }
+
+        .silktide .btn-success {
+            color: #fff;
+            background-color: #35c786;
+            background-image: linear-gradient(180deg,#35c786,#35c786);
+            background-repeat: repeat-x;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff35c786",endColorstr="#ff35c786",GradientType=0);
+            border-color: #35c786 #35c786 #258b5d;
+            border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+            *background-color: #35c786;
+            filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+            display: block;
+            padding: 5px 15px;
+        }
+
+        .silktide p {
+            margin: 0 0 10px;
+        }
+
+        .silktide .form-horizontal .control-group {
+            margin-bottom: 20px;
+            *zoom: 1;
+        }
+
+        .silktide .form-horizontal .control-label {
+            float: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .silktide .form-horizontal .controls {
+            margin-left: 0;
+        }
+
+        .silktide input.silktide-property-editor.silktide-textstring {
+            width: 100%;
+            margin: 0 0 10px;
+            max-width: 300px;
+        }
+
+        .silktide .btn-link.-underline {
+            display: inline-block;
+            text-decoration: underline;
+        }
+
+        .silktide .form-horizontal .control-group {
+            margin-bottom: 20px;
+            *zoom: 1;
+        }
+
+        .silktide label:not([for]), label[for=""] {
+            cursor: default;
+        }
+
+        .silktide .silktide-form-check {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -ms-flex-align: center;
+            align-items: center;
+            position: relative;
+            padding: 0;
+            margin: 0;
+        }
+        .disabled-input {
+            background: #ebebe4;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+           
+            var message = '@message';
+            if (message) {
+                alert(message);
+            }
+        });        
+        $(".SaveKey").click(function (e) {
+            
+            e.preventDefault();
+            var checkValue = CheckTextBox($("#APIKey"));
+            if (checkValue == true) {
+                $("form").submit();
+            }
+        })
+
+        function CheckTextBox(item) {
+            
+            var textbox = item[0];
+            if (textbox.value && (textbox.value.length > 50)) {
+                alert("API key has wrong format. Length must be less then 50 characters.");
+                return false;
+            }
+            else if (textbox.value == '') {
+                alert("Textbox should not be empty."); 
+                return false;
+            }
+            else if (textbox.value == undefined) {
+                alert("There are some problem when submit.");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        $("#CheckApi").click(function (e) {
+            
+            e.preventDefault();
+            var checkValue = CheckTextBox($("#APIKey"));
+            var keyValue = $("#APIKey").val().trim();
+            if (checkValue == true) {
+                $.ajax({
+                    url: $(this).attr("href") + '?ApiKey=' + keyValue, // comma here instead of semicolon
+                success: function (data) {
+                    
+                    if (data == "Valid") {
+                        alert("API key is valid");
+                    }
+                    if (data == "NotValid") {
+                        alert("API key is not valid");
+                    }
+                    if (data == "Error") {
+                        alert("Error");
+                    }
+                }
+            });
+            }
+        });
+    </script>
+
+}

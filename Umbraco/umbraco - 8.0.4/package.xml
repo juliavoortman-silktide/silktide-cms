@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>Brimit.Silktide.Plugin.dll</guid>
+      <orgPath>~/bin</orgPath>
+      <orgName>Brimit.Silktide.Plugin.dll</orgName>
+    </file>
+    <file>
+      <guid>dashboard.html</guid>
+      <orgPath>~/App_Plugins/Silktide</orgPath>
+      <orgName>dashboard.html</orgName>
+    </file>
+    <file>
+      <guid>package.manifest</guid>
+      <orgPath>~/App_Plugins/Silktide</orgPath>
+      <orgName>package.manifest</orgName>
+    </file>
+    <file>
+      <guid>silktide.controller.js</guid>
+      <orgPath>~/App_Plugins/Silktide</orgPath>
+      <orgName>silktide.controller.js</orgName>
+    </file>
+    <file>
+      <guid>silktide.resource.js</guid>
+      <orgPath>~/App_Plugins/Silktide</orgPath>
+      <orgName>silktide.resource.js</orgName>
+    </file>
+    <file>
+      <guid>en-US.xml</guid>
+      <orgPath>~/App_Plugins/Silktide/lang</orgPath>
+      <orgName>en-US.xml</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>Silktide</name>
+      <version>8.0.4</version>
+      <iconUrl></iconUrl>
+      <license url="http://opensource.org/licenses/MIT">MIT License</license>
+      <url>https://silktide.com/</url>
+      <requirements type="Strict">
+        <major>8</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Silktide</name>
+      <website>https://silktide.com/</website>
+    </author>
+    <contributors></contributors>
+    <readme><![CDATA[]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+  <Actions />
+</umbPackage>

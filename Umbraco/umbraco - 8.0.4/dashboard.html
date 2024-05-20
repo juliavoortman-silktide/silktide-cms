@@ -1,0 +1,65 @@
+﻿<div ng-controller="Silktide.Controller as vm">
+	<form novalidate class="form-horizontal">
+		<div ng-show="vm.loading">
+			<umb-load-indicator></umb-load-indicator>
+		</div>
+		<umb-box>
+
+			<umb-box-content>
+				<div class="flex justify-between items-center">
+					<h3 class="bold">Silktide CMS plugin</h3>
+					<umb-button action="vm.saveSettings()"
+								label="Save"
+								type="button"
+								shortcut="ctrl+s"
+								button-style="success"
+								icon="">
+					</umb-button>
+				</div>
+				<p>
+					To run the plugin, specify your API key for the Silktide service.
+				</p>
+				<p>&nbsp;</p>
+
+				<div class="control-group">
+
+					<div class="umb-el-wrap">
+						<label class="control-label" for="apikey">API key: </label>
+						<div class="controls">
+							<div class="umb-property-editor">
+								<div disable-tabindex="preview">
+									<input type="text" name="apikey" ng-model="vm.settings.apikey" class="umb-property-editor umb-textstring" required="required" no-dirty-check ng-disabled="vm.settings.isdisabled">
+									<p>To check the API key <a href="#" ng-click="vm.validateApiKey($event)" class="btn-link -underline">click here for verification</a>. Do not forget to click "Save" after successful verification.</p>
+									<p>&nbsp;</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Destination languages -->
+				<div class="control-group">
+					<div class="umb-el-wrap">
+						<label class="umb-form-check umb-form-check--checkbox">
+							<input type="checkbox"
+								   value="{{vm.settings.isdisabled}}"
+								   class=""
+								   style="margin-bottom: 5px; margin-right: 5px;"
+								   ng-model="vm.settings.isdisabled" no-dirty-check />
+							<!-- umb-form-check__input
+								 umb-form-check__text
+								<span class="umb-form-check__state" aria-hidden="true">
+									<span class="umb-form-check__check">
+										<i class=""></i>
+									</span>
+								</span>-->
+							<span class="">Disable plugin</span>
+						</label>
+
+					</div>
+				</div>
+
+			</umb-box-content>
+		</umb-box>
+	</form>
+</div>

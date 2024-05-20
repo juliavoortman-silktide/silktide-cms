@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brimit.Silktide.Umbraco.Web", "Brimit.Silktide.Umbraco.Web\Brimit.Silktide.Umbraco.Web.csproj", "{D239F0AE-B9CE-4E29-8C0D-6FFB7D34A150}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brimit.Silktide.Umbraco.Plugin", "Brimit.Silktide.Umbraco.Plugin\Brimit.Silktide.Umbraco.Plugin.csproj", "{69E1C246-E1EF-4AD2-BD43-582F727BDB6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D239F0AE-B9CE-4E29-8C0D-6FFB7D34A150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D239F0AE-B9CE-4E29-8C0D-6FFB7D34A150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D239F0AE-B9CE-4E29-8C0D-6FFB7D34A150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D239F0AE-B9CE-4E29-8C0D-6FFB7D34A150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69E1C246-E1EF-4AD2-BD43-582F727BDB6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E1C246-E1EF-4AD2-BD43-582F727BDB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E1C246-E1EF-4AD2-BD43-582F727BDB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E1C246-E1EF-4AD2-BD43-582F727BDB6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

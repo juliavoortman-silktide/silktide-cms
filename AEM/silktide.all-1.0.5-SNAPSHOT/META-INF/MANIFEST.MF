@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Created-By: Apache Jackrabbit FileVault - Package Maven Plugin 1.1.6
+Build-Jdk-Spec: 19
+Implementation-Title: Silktide Project - All
+Implementation-Version: 1.0.5-SNAPSHOT
+Content-Package-Type: container
+Content-Package-Id: com.silktide:silktide.all:1.0.5-SNAPSHOT
+Content-Package-Description: All content package for Silktide Project
+Content-Package-Roots: /apps/silktide-packages,/apps/silktide-vendor-pac
+ kages
+

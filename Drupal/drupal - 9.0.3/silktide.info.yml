@@ -1,0 +1,20 @@
+name: Silktide
+type: module
+description: 'Integrate Drupal with Silktide.'
+package: Web services
+# core: 8.x
+php: 5.6
+configure: silktide.form
+dependencies:
+  - drupal:node
+
+# Information added by Drupal.org packaging script on 2019-02-05
+# version: '9.x-1.5'
+core_version_requirement: '9.x'
+# project: 'silktide'
+# datestamp: 1549366084
+
+# Information added by Drupal.org packaging script on 2022-01-26
+version: '9.0.3'
+project: 'silktide'
+datestamp: 1643237186
