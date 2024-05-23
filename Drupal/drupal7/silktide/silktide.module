@@ -1,0 +1,89 @@
+<?php
+/**
+ * @file
+ * Silktide module.
+ */
+
+/*
+ * Implements hook_menu().
+ */
+function silktide_menu() {
+  $items = array();
+
+  $items['admin/config/services/silktide'] = array(
+    'title' => 'Silktide',
+    'description' => 'Basic configuration options for Silktide integration.',
+    'access arguments' => array('administer silktide settings'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('silktide_admin_settings_form'),
+    'file' => 'api_settings.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function silktide_node_insert($node) {
+    notifySilktide($node);
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function silktide_node_update($node) {
+    notifySilktide($node);
+}
+
+function notifySilktide($node) {
+    if ($node->status !== NODE_PUBLISHED || $node->type !== "page") {
+        return;
+    }
+
+    if (
+        isset($node->original->title) &&
+        $node->original->title === $node->title &&
+        $node->original->body['und'][0]['value'] === $node->body['und'][0]['value'] &&
+        $node->original->status === NODE_PUBLISHED
+    ) {
+        return;
+    }
+
+    $apiData = file_get_contents(__DIR__.'/silktide.txt');
+    $apiParts = explode("|", $apiData);
+
+    $apiKey = $apiParts[0];
+    $deferredSeconds = isset($apiParts[1]) && $apiParts[1] ? ((int)$apiParts[1]) : 0;
+
+    if (!$apiKey || $apiKey === "exampleapikey") {
+        return;
+    }
+
+    $path = isset($node->path) && $node->path['alias'] ? $node->path['alias'] : ("node/".$node->nid);
+    $currentUrl = url($path, array('absolute' => TRUE));
+
+    $data = [
+        'apiKey' => $apiKey,
+        'url' => $currentUrl
+    ];
+
+    if ($deferredSeconds) {
+        $data['deferRetestSeconds'] = $deferredSeconds;
+    }
+
+    $payload = json_encode($data);
+
+    $curl = curl_init("https://api.silktide.com/cms/update");
+    curl_setopt_array($curl, array(
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => $payload,
+        CURLOPT_HTTPHEADER => array(
+            "Content-Type: application/json"
+        ),
+    ));
+
+    $response = curl_exec($curl);
+    curl_close($curl);
+}
