@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <TargetFramework>net5.0</TargetFramework>
+      <ContentTargetFolders>.</ContentTargetFolders>
+      <Product>Silktide.Umbraco.Plugin</Product>
+      <PackageId>Silktide.Umbraco.Plugin</PackageId>
+      <Title>Silktide Umbraco 9 Plugin</Title>
+      <Description>
+        The complete solution for web managers.
+        Plugin for Umbraco v9.5.4
+        https://help.silktide.com/en/articles/8020884-how-to-integrate-silktide-with-umbraco
+      </Description>
+      <Product>Silktide CMS Integration with Umbraco v9</Product>
+      <PackageTags>umbraco plugin package</PackageTags>
+      <RootNamespace>Silktide.Umbraco.Plugin</RootNamespace>
+      <Version>9.5.4.6</Version>
+      <AssemblyVersion>1.9.5.4</AssemblyVersion>
+      <FileVersion>1.9.5.4</FileVersion>
+      <Company>Silktide®</Company>
+      <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+      <Copyright>Silktide®</Copyright>
+      <PackageProjectUrl>https://help.silktide.com/en/articles/8020884-how-to-integrate-silktide-with-umbraco</PackageProjectUrl>
+      <PackageIcon>\App_Plugins\Silktide.Umbraco.Plugin\Silktide.png</PackageIcon>
+      <PackageReadmeFile>\App_Plugins\Silktide.Umbraco.Plugin\README.md</PackageReadmeFile>
+      <RepositoryType>none</RepositoryType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Umbraco.Cms.Web.Website" Version="9.5.4" />
+        <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="9.5.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="App_Plugins\Silktide.Umbraco.Plugin\**\*.*">
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+        </Content>
+        <None Include="build\**\*.*">
+            <Pack>true</Pack>
+            <PackagePath>buildTransitive</PackagePath>
+        </None>
+    </ItemGroup>
+</Project>

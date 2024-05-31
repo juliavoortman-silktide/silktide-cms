@@ -1,4 +1,4 @@
-# Introduction 
+# Introduction
 Silktide is a company that helps customers improve their websites by analyzing the content of
 their website in a real browser to give recommendations on how they can improve their SEO,
 check for mistakes in content and ensure the page is accessible. Silktide tests these sites every
@@ -11,19 +11,21 @@ Silktide have been requested by one of our customers to build an Umbraco plugin.
 
 # How to install the plugin
 
-		dotnet add package Brimit.Silktide.Umbraco.Plugin
+		dotnet add package Silktide.Umbraco.Plugin --version 9.5.4.6  (or whichever is latest 9.5.4 release)
 
 # How to remove the plugin
 
-		dotnet remove package Brimit.Silktide.Umbraco.Plugin
+		dotnet remove package Silktide.Umbraco.Plugin
 
 # How to setup for the UI
 In the .cshtml page template specify the following line in the header
 @inject IHttpContextAccessor httpContextAccessor;
 <meta name="silktide-cms" content="@Html.Raw(httpContextAccessor.HttpContext.Items["SILKTIDE.CMS"])">
 
+
 # How to test
 The plugin implements 2 things:
+
 ## Case A:  
 Calling a remote API and passing a key and a list of updated site URLs to it.
 - Register a temporary address on https://webhook.site
@@ -35,14 +37,14 @@ Calling a remote API and passing a key and a list of updated site URLs to it.
 - After replacing the address, save the setting again to update the cache
 - Test saving content in a variety of ways (with and without additional languages)
 
-### Expected result: 
+### Expected result:
 	When publishing content in case of data changes the remote API should receive data as a POST request like this
 	{
 		"apiKey": "123456798",
 		"urls": ["http://url1.local","http://url2.local"]
 	}
 
-## Case B: 
+## Case B:
 Rendering the path to the admin panel in JSON format in base64 encoding
 - Install the plugin in Umbraco
 - In the umbraco view  in .cshtml file specify the following lines:
@@ -61,6 +63,6 @@ eyJlZGl0b3JVcmwiOiJodHRwOi8vc2lsa3RpZGUtZW4ubG9jYWwvdW1icmFjbyMvY29udGVudC9jb250
 •	Make sure that the current page is available at the parameter specified in the ‘editorUrl’
 
 
-### Expected result: 
-	
+### Expected result:
+
 	After inserting the code you should get a BASE64 format string which is a link to this page for editing in the admin panel
