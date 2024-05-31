@@ -33,32 +33,26 @@ An API key is used to authenticate calls to our API from Umbraco.
 #### Requirements
 
 You will need an API key from Silktide, to be able to upload a plugin to your Umbraco installation, and to edit a core page template.
-
  
 1. Install the plugin
 
-[Install plugin here (V9)](https://www.nuget.org/packages/silktide.umbraco.plugin/9.5.4)
-[Install plugin here (V10)](https://www.nuget.org/packages/silktide.umbraco.plugin/10.8.3)
-[Install plugin here (V11)](https://www.nuget.org/packages/silktide.umbraco.plugin/11.5.0)
- 
+[Install plugin here](https://www.nuget.org/packages/silktide.umbraco.plugin/)
 
- i. Navigate to Packages, then Install local inside your Umbraco installation.
- 
- ii. Accept the license and select Install package.
-
+ i. Select the version that matches your Umbraco installed version. 
+ ii. Run `dotnet add package Silktide.Umbraco.Plugin --version 9.5.4.6`  (or whichever is the release that matches your install)
  
 2. Add code snippet
 
 In your Umbraco backend, navigate to your page templates (ideally your master template) and include the following snippet of code:
 
-
-        meta name="silktide-cms" content="@Html.Raw(HttpContext.Current.Items["SILKTIDE.CMS"])"
-
+```
+@inject IHttpContextAccessor httpContextAccessor;
+<meta name="silktide-cms" content="@Html.Raw(httpContextAccessor.HttpContext.Items["SILKTIDE.CMS"])">
+```
  
 3. Create your API key
 
 Silktide provides an API key to authenticate calls to the API from Umbraco.
-
  
 To obtain a key:
 
@@ -80,8 +74,7 @@ _Note: you will need the appropriate website administrator permissions to set up
  
 4. API key configuration
 
-Open your Umbraco backend and select Silktide from the Settings menu. Enter the API key provided by Silktide here and select ìclick here for verificationî.
-
+Open your Umbraco backend and select Silktide from the Settings menu. Enter the API key provided by Silktide here and select ‚Äúclick here for verification‚Äù.
  
 
 If this returns successfully, select Save for the changes to take effect.
@@ -102,7 +95,7 @@ Once the website has finished retesting, you should find a CMS button beside you
 
  ![Image2](https://silktide-487cc78569db.intercom-attachments-7.com/i/o/765227132/bec279ababe7ed0ea10b2677/efc31caef6b894f76ee88e35cdf68519)
 
-If everything is working properly, selecting the ëCMSí button here or elsewhere on the platform should open the associated editor page inside your Umbraco admin account.
+If everything is working properly, selecting the ‚ÄòCMS‚Äô button here or elsewhere on the platform should open the associated editor page inside your Umbraco admin account.
 
  
 7. Confirmation of working page update webhook
