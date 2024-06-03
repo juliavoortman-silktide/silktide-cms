@@ -1,0 +1,21 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SilktideUmbracoPluginContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\Silktide.Umbraco.Plugin\**\*.*</SilktideUmbracoPluginContentFilesPath>
+  </PropertyGroup>
+
+  <Target Name="CopySilktideUmbracoPluginAssets" BeforeTargets="Build">
+    <ItemGroup>
+      <SilktideUmbracoPluginContentFiles Include="$(SilktideUmbracoPluginContentFilesPath)" />
+    </ItemGroup>
+    <Message Text="Copying Silktide.Umbraco.Plugin files: $(SilktideUmbracoPluginContentFilesPath) - #@(SilktideUmbracoPluginContentFiles->Count()) files" Importance="high" />
+    <Copy SourceFiles="@(SilktideUmbracoPluginContentFiles)" DestinationFiles="@(SilktideUmbracoPluginContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\Silktide.Umbraco.Plugin\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="ClearSilktideUmbracoPluginAssets" BeforeTargets="Clean">
+    <ItemGroup>
+      <SilktideUmbracoPluginDir Include="$(MSBuildProjectDirectory)\App_Plugins\Silktide.Umbraco.Plugin\" />
+    </ItemGroup>
+    <Message Text="Clear old Silktide.Umbraco.Plugin data" Importance="high" />
+    <RemoveDir Directories="@(SilktideUmbracoPluginDir)" />
+  </Target>
+</Project>

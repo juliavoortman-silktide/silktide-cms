@@ -95,7 +95,7 @@ Once the website has finished retesting, you should find a CMS button beside you
 
  ![Image2](https://silktide-487cc78569db.intercom-attachments-7.com/i/o/765227132/bec279ababe7ed0ea10b2677/efc31caef6b894f76ee88e35cdf68519)
 
-If everything is working properly, selecting the �CMS� button here or elsewhere on the platform should open the associated editor page inside your Umbraco admin account.
+If everything is working properly, selecting the "CMS" button here or elsewhere on the platform should open the associated editor page inside your Umbraco admin account.
 
 
 7. Confirmation of working page update webhook

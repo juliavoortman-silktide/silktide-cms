@@ -1,0 +1,9 @@
+﻿{
+	"name": "Silktide.Umbraco.Plugin",
+	"version": "9.0.0",
+	"allowPackageTelemetry": false,
+	"javascript": [
+		"/App_Plugins/Silktide.Umbraco.Plugin/silktide.controller.js",
+		"/App_Plugins/Silktide.Umbraco.Plugin/silktide.resource.js"
+	]
+}
